@@ -1,20 +1,12 @@
 #include "ruby.h"
 
-#ifndef RUBY_19
-  #include "rubyio.h"
-#else
-  #include "ruby/io.h"
-#endif
+#include "ruby/io.h"
 
 #ifndef HAVE_RB_IO_T
 #define rb_io_t OpenFile
 #endif
 
-#ifndef RUBY_19
-#define rb_io_stdio_file(fptr) ((fptr)->f)
-#else
 #define rb_io_fread(buf,n,f) fread((buf),1,(n),(f))
-#endif
 
 //
 // interface
